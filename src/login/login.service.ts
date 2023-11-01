@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { User } from './schema/login.schema';
 import * as mongoose from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { NOMEM } from 'dns';
 
 @Injectable()
 export class LoginService {
@@ -19,4 +20,11 @@ export class LoginService {
     const user = await this.userModel.create(userInfo);
     return user;
   }
+
+  async updateUser(userInfo: User, userId: number): Promise<User> {
+    return this.userModel.findByIdAndUpdate(userInfo,userId);
+  }
+
+  
+
 }

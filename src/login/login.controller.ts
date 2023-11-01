@@ -15,4 +15,14 @@ export class LoginController {
   async saveUser(@Body() newUser: User): Promise<User> {
     return this.loginService.createNewUser(newUser);
   }
+
+  @Put('/update')
+  async updateUser(@Body() UpdatedUser: User): Promise<User>{
+    return this.loginService.updateUser(UpdatedUser);
+  }
+
+  @delete('/destroy')
+  async destroyUser(@Body() DestroyUser: User): Promise<User|null>{
+    return this.loginService.destroyUser(DestroyUser);
+  }
 }
